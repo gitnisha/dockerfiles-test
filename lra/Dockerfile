@@ -1,15 +1,6 @@
-FROM  fabric8/java-centos-openjdk8-jre
+FROM redhat-openjdk-18/openjdk18-openshift
 
-
-RUN groupadd -r jboss -g 1000 && useradd -u 1000 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss && \
-    chmod 755 /opt/jboss
-# Set the working directory to jboss' user home directory
-WORKDIR /opt/jboss
-# jboss user from java-jboss-openjdk8-jdk
-RUN chown -R jboss /deployments \
-  && usermod -g root -G `id -g jboss` jboss \
-  && chmod -R "g+rwX" /deployments \
-  && chown -R jboss:root /deployments
+USER root
 RUN mkdir /data
 RUN chown -R jboss /data \
   && usermod -g root -G `id -g jboss` jboss \
