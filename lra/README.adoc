@@ -1,0 +1,12 @@
+We use the parameter `swarm.transactions.object-store-path` relativelly as it has trouble with absolute path.
+We go from location like
+
+```
+./tmp/wildfly-self-contained1289751191330356060.d/data/ShadowNoFileLockStore
+```
+
+Then we will expect that OpenShift mounts the persistent claim at `/data`
+
+
+NARAYANA_HOME=~/Transactions/narayana/rts/lra/lra-coordinator/; cp Dockerfile $NARAYANA_HOME; cd $NARAYANA_HOME
+docker exec -it `docker ps | grep -v CONTAINER | sed 's/^\([a-z0-9]*\).*/\1/'` bash
