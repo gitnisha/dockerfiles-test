@@ -1,11 +1,19 @@
-We use the parameter `swarm.transactions.object-store-path` relativelly as it has trouble with absolute path.
-We go from location like
+* We use the parameter `swarm.transactions.object-store-path` relativelly as it has trouble with absolute path.
+  We go from location like
+
+  ```
+  ./tmp/wildfly-self-contained1289751191330356060.d/data/ShadowNoFileLockStore
+  ```
+
+  Then we expect that OpenShift mounts the persistent claim at `/data`
+
+* I discussed what is expected base image for openshift and swarm and Lada Thon points me to 
 
 ```
-./tmp/wildfly-self-contained1289751191330356060.d/data/ShadowNoFileLockStore
+FROM redhat-openjdk-18/openjdk18-openshift
 ```
 
-Then we will expect that OpenShift mounts the persistent claim at `/data`
+but it should work in the same way as e.g. `fabric8/java-centos-openjdk8-jre`
 
 
 NARAYANA_HOME=~/Transactions/narayana/rts/lra/lra-coordinator/; cp Dockerfile $NARAYANA_HOME; cd $NARAYANA_HOME
