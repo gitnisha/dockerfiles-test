@@ -13,3 +13,6 @@ GRANT SELECT ON sys.pending_trans$ TO crashrec;
 GRANT SELECT ON sys.dba_2pc_pending TO crashrec;
 GRANT EXECUTE ON sys.dbms_xa TO crashrec;
 GRANT EXECUTE ON sys.dbms_system TO crashrec; 
+
+-- for user system can call execute dbms_transaction.purge_lost_db_entry('5.19.150115');
+grant sysdba to system;

@@ -32,4 +32,9 @@ https://blogs.oracle.com/db/oracle-support-master-note-for-troubleshooting-manag
 ```
 -- what are currently in-doubt transactions at Oracle side
 select * from DBA_2PC_PENDING;
+
+-- connect as system/oracle
+rollback force '5.19.150115';
+execute dbms_transaction.purge_lost_db_entry('5.19.150115');
 ```
+
