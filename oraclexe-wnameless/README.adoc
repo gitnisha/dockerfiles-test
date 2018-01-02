@@ -1,0 +1,35 @@
+= Oracle XE from the Dockerhub
+
+See https://github.com/wnameless/docker-oracle-xe-11g
+
+== To run
+
+```
+docker build . -t oraclexe
+docker run -d -p 49160:22 -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true oraclexe
+```
+
+To connect remotely by SQL*Plus you need to
+
+. Download: http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html :  instantclient-sqlplus-linux.x64-12.1.0.2.0.zip
+. Unzip
+. Configure PATH for LD LIBRARY: https://docs.oracle.com/en/database/oracle/oracle-database/12.2/sqpug/SQL-Plus-instant-client.html#GUID-101860A8-159E-45E5-92AF-DEFECE2089E0
+  ```
+  export LD_LIBRARY_PATH=${PWD}:${LD_LIBRARY_PATH}
+  ```
+. Run
+  ```
+  ./sqlplus system/oracle@localhost:1521/XE
+  ```
+
+== Check XA transactions
+
+Some SQL commands here (https://docs.oracle.com/cd/B28359_01/server.111/b28310/ds_txnman003.htm#ADMIN12251)
+
+and some more text on XA troubleshooting in Oracle
+https://blogs.oracle.com/db/oracle-support-master-note-for-troubleshooting-managed-distributed-transactions-doc-id-1006641
+
+```
+-- what are currently in-doubt transactions at Oracle side
+select * from DBA_2PC_PENDING;
+```

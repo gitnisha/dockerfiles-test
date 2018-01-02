@@ -5,7 +5,7 @@ GRANT CONNECT TO crashrec;
 GRANT CREATE SESSION TO crashrec;
 GRANT ALL PRIVILEGES TO crashrec;
 GRANT UNLIMITED TABLESPACE TO crashrec;
-
+-- GRANT DBA TO crashrec;
 
 -- https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/6.4/html/administration_and_configuration_guide/sect-example_datasources#Example_Oracle_XA_Datsource1
 GRANT SELECT ON sys.dba_pending_transactions TO crashrec;
