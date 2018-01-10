@@ -16,3 +16,4 @@ GRANT EXECUTE ON sys.dbms_system TO crashrec;
 
 -- for user system can call execute dbms_transaction.purge_lost_db_entry('5.19.150115');
 grant sysdba to system;
+grant dba to system;
