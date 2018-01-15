@@ -1,6 +1,8 @@
 FROM mysql
 # run as:
-# docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pw -d <container-id>
+# docker build . -t mysql-test
+# docker run --rm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pw -d mysql-test
+# jdbc url to access then: jdbc:mysql://localhost:3306/test  test/test
 
 COPY init.sql /docker-entrypoint-initdb.d
 
